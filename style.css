@@ -1,0 +1,24 @@
+html, body{
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    min-height: 100vh;
+    background-color: lightslategrey;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.calc-body {
+    width: 320px;
+    height: 570px;
+    background-color: lightskyblue;
+    box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, 
+                rgba(240, 46, 170, 0.3) 10px 10px, 
+                rgba(240, 46, 170, 0.2) 15px 15px, 
+                rgba(240, 46, 170, 0.1) 20px 20px, 
+                rgba(240, 46, 170, 0.05) 25px 25px;
+}
+
