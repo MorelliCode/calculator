@@ -5,20 +5,64 @@ html, body{
 
 body {
     min-height: 100vh;
-    background-color: lightslategrey;
+    background-color: darkgrey;
     display: flex;
     align-items: center;
     justify-content: space-around;
 }
 
 .calc-body {
-    width: 320px;
-    height: 570px;
-    background-color: lightskyblue;
-    box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, 
-                rgba(240, 46, 170, 0.3) 10px 10px, 
-                rgba(240, 46, 170, 0.2) 15px 15px, 
-                rgba(240, 46, 170, 0.1) 20px 20px, 
-                rgba(240, 46, 170, 0.05) 25px 25px;
+    min-width: 380px;
+    min-height: 570px;
+    border-radius: 20px;
+    padding: 1.5em;
+    background-color: black;
+    box-shadow: rgba(128, 0 , 128, 0.9) 5px 5px, 
+                rgba(128, 0 , 128, 0.8) 10px 10px, 
+                rgba(128, 0 , 128, 0.7) 15px 15px, 
+                rgba(128, 0 , 128, 0.6) 20px 20px, 
+                rgba(128, 0 , 128, 0.5) 25px 25px,
+                rgba(128, 0 , 128, 0.4) 30px 30px, 
+                rgba(128, 0 , 128, 0.3) 35px 35px, 
+                rgba(128, 0 , 128, 0.2) 40px 40px, 
+                rgba(128, 0 , 128, 0.1) 45px 45px, 
+                rgba(128, 0 , 128, 0.05) 50px 50px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    align-items: stretch;
+    gap: 1.5em;
 }
 
+.display {
+    background-color: slateblue;
+    grid-column: 1 / span 4;
+    font-size: 4em;
+    text-align: end;
+
+}
+
+button {
+    box-shadow: purple 5px 5px;
+    border-radius: 5px;
+    font-size: 2em;
+    background-color: lightseagreen;
+}
+
+button:active {
+    box-shadow: transparent 5px 5px;
+    transform: translate(5px, 5px);
+}
+
+.button.square {
+    aspect-ratio: 1 / 1;
+}
+
+.long {
+    grid-row: 4 / span 3;
+    grid-column: 4;
+}
+
+.wide {
+    grid-column: 1 / span 3;
+}
