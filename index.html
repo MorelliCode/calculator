@@ -5,27 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
     <title>Calculator</title>
 </head>
 <body>
     <div class="calc-body">
-        <div class="display">123456789</div>
-        <button class="button square">/</button>
-        <button class="button square">*</button>
-        <button class="button square">-</button>
-        <button class="button square">+</button>
-        <button class="button square">1</button>
-        <button class="button square">2</button>
-        <button class="button square">3</button>
-        <button class="button square">C</button>
-        <button class="button square">4</button>
-        <button class="button square">5</button>
-        <button class="button square">6</button>
-        <button class="button square">7</button>
-        <button class="button square">8</button>
-        <button class="button square">9</button>
-        <button class="long button">=</button>
-        <button class="wide button">0</button>
+        <div class="display">0</div>
+        <button class="button square" data-function="calc">/</button>
+        <button class="button square" data-function="calc">*</button>
+        <button class="button square" data-function="calc">-</button>
+        <button class="button square" data-function="calc">+</button>
+        <button class="button square" data-function="number">1</button>
+        <button class="button square" data-function="number">2</button>
+        <button class="button square" data-function="number">3</button>
+        <button class="button square" id="clear">AC</button>
+        <button class="button square" data-function="number">4</button>
+        <button class="button square" data-function="number">5</button>
+        <button class="button square" data-function="number">6</button>
+        <button class="button square" data-function="number">7</button>
+        <button class="button square" data-function="number">8</button>
+        <button class="button square" data-function="number">9</button>
+        <button class="long button" id="equals">=</button>
+        <button class="wide button" data-function="number">0</button>
     </div>
 </body>
 </html>
