@@ -68,7 +68,7 @@ function appendNumber(number) {
 
 function chooseOperation(operation) {
     if (operand1 === "") return;
-    if (operand2 === ""){
+    if (operand2 !== ""){
         compute();
     }
     operator = operation;
