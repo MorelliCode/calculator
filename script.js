@@ -17,6 +17,7 @@ const displayText = document.querySelector('.display');
 
 
 //Add event listeners to all buttons
+//Event listeners for numbers and point
 numberButtons.forEach( button => button.addEventListener('click', e => {
     let number = e.target.textContent;
     appendNumber(number);
@@ -25,6 +26,7 @@ numberButtons.forEach( button => button.addEventListener('click', e => {
     console.log(number);
 }));
 
+//Event listeners for the 4 basic operations buttons
 operationButtons.forEach( button => button.addEventListener('click', e => {
     let operation = e.target.textContent;
     chooseOperation(operation);
@@ -32,16 +34,19 @@ operationButtons.forEach( button => button.addEventListener('click', e => {
     console.log(operation);
 }));
 
+//Event listener for the All Clear button
 clearButton.addEventListener('click', e =>{
     allClear();
     updateDisplay();
     console.log("All Clear");
 });
 
+//Event listener for delete button
 deleteButton.addEventListener('click', e =>{
     console.log("Delete");
 });
 
+//Event listener for the equals button
 equalsButton.addEventListener('click', e =>{
     compute();
     updateDisplay();
@@ -61,11 +66,13 @@ function deleteDigit() {
 
 };
 
+//Function for appending numbers when clicking the numbers or point
 function appendNumber(number) {
     if (number === "." && operand1.includes(".")) return;
     operand1 += number;
 };
 
+//Function for choosing which operation to do
 function chooseOperation(operation) {
     if (operand1 === "") return;
     if (operand2 !== ""){
@@ -76,6 +83,7 @@ function chooseOperation(operation) {
     operand1 = "";
 };
 
+//Function for computing the result of the calculation
 function compute(){
     let computation;
     const a = parseFloat(operand2);
@@ -99,8 +107,10 @@ function compute(){
     operand1 = computation;
     operator = undefined;
     operand2 = "";
+    updateDisplay();
 }
 
+//Function for updating the display text
 function updateDisplay() {
     displayText.textContent = operand1;
 };
