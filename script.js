@@ -108,7 +108,10 @@ function compute(){
             computation = a * b
             break
         case '÷':
-            computation = a / b
+            if (b === 0){
+                computation = "Nice try"
+            }
+            else {computation = a / b}
             break
         default: return
     };
