@@ -30,7 +30,7 @@ numberButtons.forEach( button => button.addEventListener('click', e => {
 operationButtons.forEach( button => button.addEventListener('click', e => {
     let operation = e.target.textContent;
     chooseOperation(operation);
-    updateDisplay();
+    //updateDisplay();
     console.log(operation);
 }));
 
@@ -50,6 +50,7 @@ deleteButton.addEventListener('click', e =>{
 equalsButton.addEventListener('click', e =>{
     compute();
     updateDisplay();
+    displayValue = "";
     console.log("Equals");
 });
 
@@ -70,6 +71,7 @@ function deleteDigit() {
 function appendNumber(number) {
     if (number === "." && operand1.includes(".")) return;
     operand1 += number;
+    displayValue += number;
 };
 
 //Function for choosing which operation to do
@@ -81,6 +83,7 @@ function chooseOperation(operation) {
     operator = operation;
     operand2 = operand1;
     operand1 = "";
+    displayValue = "";
 };
 
 //Function for computing the result of the calculation
@@ -105,6 +108,7 @@ function compute(){
         default: return
     };
     operand1 = computation;
+    displayValue = computation;
     operator = undefined;
     operand2 = "";
     updateDisplay();
@@ -112,5 +116,5 @@ function compute(){
 
 //Function for updating the display text
 function updateDisplay() {
-    displayText.textContent = operand1;
+    displayText.textContent = displayValue;
 };
