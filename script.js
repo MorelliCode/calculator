@@ -70,6 +70,8 @@ function deleteDigit() {
 //Function for appending numbers when clicking the numbers or point
 function appendNumber(number) {
     if (number === "." && operand1.includes(".")) return;
+    if (displayText.textContent === "0" && number === "0") return;
+    if (displayText.textContent === "0" && number !== ".") displayValue = "";
     operand1 += number;
     displayValue += number;
 };
