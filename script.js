@@ -43,6 +43,7 @@ clearButton.addEventListener('click', e =>{
 
 //Event listener for delete button
 deleteButton.addEventListener('click', e =>{
+    deleteDigit();
     console.log("Delete");
 });
 
@@ -64,7 +65,9 @@ function allClear() {
 };
 
 function deleteDigit() {
-
+    operand1 = operand1.slice(0, -1);
+    displayValue = displayValue.slice(0, -1);
+    updateDisplay();
 };
 
 //Function for appending numbers when clicking the numbers or point
