@@ -57,6 +57,8 @@ equalsButton.addEventListener('click', e =>{
 
 
 //Function declarations
+
+//Function to clear all variables and display
 function allClear() {
     operand1 = "";
     operator = undefined;
@@ -64,6 +66,7 @@ function allClear() {
     displayValue = "";
 };
 
+//Function to delete the last digit of the displayed number
 function deleteDigit() {
     operand1 = operand1.slice(0, -1);
     displayValue = displayValue.slice(0, -1);
@@ -75,6 +78,7 @@ function appendNumber(number) {
     if (number === "." && operand1.includes(".")) return;
     if (displayText.textContent === "0" && number === "0") return;
     if (displayText.textContent === "0" && number !== ".") displayValue = "";
+    if (displayText.textContent.length === 9) return;
     operand1 += number;
     displayValue += number;
 };
@@ -89,6 +93,7 @@ function chooseOperation(operation) {
     operand2 = operand1;
     operand1 = "";
     displayValue = "";
+    updateDisplay()
 };
 
 //Function for computing the result of the calculation
@@ -115,6 +120,9 @@ function compute(){
             break
         default: return
     };
+    if (computation.toString().length > 9){
+        computation = computation.toExponential(3);
+    }
     operand1 = computation;
     displayValue = computation;
     operator = undefined;
@@ -124,5 +132,5 @@ function compute(){
 
 //Function for updating the display text
 function updateDisplay() {
-    displayText.textContent = displayValue;
+     displayText.textContent = displayValue;
 };
