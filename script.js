@@ -79,7 +79,8 @@ function appendNumber(number) {
     if (displayText.textContent === "0" && number === "0") return;
     if (displayText.textContent === "0" && number !== ".") displayValue = "";
     if (displayText.textContent.length === 9) return;
-    operand1 += number;
+    if (displayValue == "" && operand1 !== "") operand1 = number
+    else operand1 += number;
     displayValue += number;
 };
 
@@ -92,7 +93,7 @@ function chooseOperation(operation) {
     operator = operation;
     operand2 = operand1;
     operand1 = "";
-    displayValue = "";
+    displayValue = "0";
     updateDisplay()
 };
 
