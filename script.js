@@ -93,8 +93,8 @@ function chooseOperation(operation) {
     operator = operation;
     operand2 = operand1;
     operand1 = "";
-    displayValue = "0";
-    updateDisplay()
+    displayValue = "";
+    // updateDisplay()
 };
 
 //Function for computing the result of the calculation
