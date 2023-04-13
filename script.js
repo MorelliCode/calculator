@@ -78,7 +78,7 @@ function appendNumber(number) {
     if (number === "." && operand1.includes(".")) return;
     if (displayText.textContent === "0" && number === "0") return;
     if (displayText.textContent === "0" && number !== ".") displayValue = "";
-    if (displayText.textContent.length === 9) return;
+    if (displayValue.length === 9) return;
     if (displayValue == "" && operand1 !== "") operand1 = number
     else operand1 += number;
     displayValue += number;
