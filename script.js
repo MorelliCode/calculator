@@ -63,7 +63,7 @@ function allClear() {
     operand1 = "";
     operator = undefined;
     operand2 = "";
-    displayValue = "";
+    displayValue = "0";
 };
 
 //Function to delete the last digit of the displayed number
@@ -94,7 +94,6 @@ function chooseOperation(operation) {
     operand2 = operand1;
     operand1 = "";
     displayValue = "";
-    // updateDisplay()
 };
 
 //Function for computing the result of the calculation
