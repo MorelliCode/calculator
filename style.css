@@ -1,3 +1,12 @@
+:root{
+    --calc-shadow:33, 11, 44;
+    --calc-color: 85, 40, 111;
+    --display-color: 216, 180, 226;
+    --button-shadow:188, 150, 230;
+    --button-color:174, 117, 159;
+}
+
+
 html, body{
     margin: 0px;
     padding: 0px;
@@ -16,17 +25,17 @@ body {
     min-height: 570px;
     border-radius: 20px;
     padding: 1.5em;
-    background-color: black;
-    box-shadow: rgba(128, 0 , 128, 0.9) 5px 5px, 
-                rgba(128, 0 , 128, 0.8) 10px 10px, 
-                rgba(128, 0 , 128, 0.7) 15px 15px, 
-                rgba(128, 0 , 128, 0.6) 20px 20px, 
-                rgba(128, 0 , 128, 0.5) 25px 25px,
-                rgba(128, 0 , 128, 0.4) 30px 30px, 
-                rgba(128, 0 , 128, 0.3) 35px 35px, 
-                rgba(128, 0 , 128, 0.2) 40px 40px, 
-                rgba(128, 0 , 128, 0.1) 45px 45px, 
-                rgba(128, 0 , 128, 0.05) 50px 50px;
+    background-color: rgb(var(--calc-color));
+    box-shadow: rgba(var(--calc-shadow), 0.9) 5px 5px, 
+                rgba(var(--calc-shadow), 0.8) 10px 10px, 
+                rgba(var(--calc-shadow), 0.7) 15px 15px, 
+                rgba(var(--calc-shadow), 0.6) 20px 20px, 
+                rgba(var(--calc-shadow), 0.5) 25px 25px,
+                rgba(var(--calc-shadow), 0.4) 30px 30px, 
+                rgba(var(--calc-shadow), 0.3) 35px 35px, 
+                rgba(var(--calc-shadow), 0.2) 40px 40px, 
+                rgba(var(--calc-shadow), 0.1) 45px 45px, 
+                rgba(var(--calc-shadow), 0.05) 50px 50px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(6, 1fr);
@@ -35,7 +44,7 @@ body {
 }
 
 .display {
-    background-color: slateblue;
+    background-color: rgb(var(--display-color));
     grid-column: 1 / span 4;
     font-size: 4em;
     text-align: end;
@@ -43,10 +52,10 @@ body {
 }
 
 button {
-    box-shadow: purple 5px 5px;
+    box-shadow: rgb(var(--button-shadow)) 5px 5px;
     border-radius: 5px;
     font-size: 2em;
-    background-color: lightseagreen;
+    background-color: rgb(var(--button-color));
 }
 
 button:active {
@@ -59,10 +68,10 @@ button:active {
 }
 
 .long {
-    grid-row: 4 / span 3;
+    grid-row: 5 / span 2;
     grid-column: 4;
 }
 
 .wide {
-    grid-column: 1 / span 3;
+    grid-column: 1 / span 2;
 }

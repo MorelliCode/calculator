@@ -1,87 +1,136 @@
-let currentNumber = "";
-let operator;
-let oldNumber;
+//Declare memory variables
+let operand1 = "";
+let operator = undefined;
+let operand2 = "";
 let displayValue = "";
 
-const numberButtons = document.querySelectorAll('[data-function="number"]');
-const calcButtons = document.querySelectorAll('[data-function="calc"]');
-const display = document.querySelector('.display');
-const clearButton = document.querySelector('#clear');
-const equalsButton = document.querySelector('#equals')
+
+//Declare buttons variables
+const numberButtons = document.querySelectorAll('[data-number]');
+const operationButtons = document.querySelectorAll('[data-function]');
+const clearButton = document.querySelector('[data-allClear]');
+const deleteButton = document.querySelector('[data-delete]');
+const equalsButton = document.querySelector('[data-equals]');
+
+//Declare display text variable
+const displayText = document.querySelector('.display');
 
 
+//Add event listeners to all buttons
+//Event listeners for numbers and point
+numberButtons.forEach( button => button.addEventListener('click', e => {
+    let number = e.target.textContent;
+    appendNumber(number);
+    updateDisplay();
 
-
-
-numberButtons.forEach(button => 
-    button.addEventListener('click', e => {
-        const num = e.target.textContent;
-        if (display.textContent === "0"){
-            displayValue = num;
-        }
-        else {
-            displayValue += num;
-        };
-        currentNumber += num;
-        console.log(num);
-        updateDisplay();
-
+    console.log(number);
 }));
 
-calcButtons.forEach(button => 
-    button.addEventListener('click', e => {
-        const operation = e.target.textContent;   
-        console.log(operation);
-        operator = operation;
-        oldNumber = currentNumber;
-        currentNumber = "";
-        displayValue = "0";
-        updateDisplay();
-
+//Event listeners for the 4 basic operations buttons
+operationButtons.forEach( button => button.addEventListener('click', e => {
+    let operation = e.target.textContent;
+    chooseOperation(operation);
+    //updateDisplay();
+    console.log(operation);
 }));
 
-equalsButton.addEventListener('click', () => {
-    calcResult(oldNumber, operator, currentNumber);
-})
+//Event listener for the All Clear button
+clearButton.addEventListener('click', e =>{
+    allClear();
+    updateDisplay();
+    console.log("All Clear");
+});
 
+//Event listener for delete button
+deleteButton.addEventListener('click', e =>{
+    deleteDigit();
+    console.log("Delete");
+});
 
-
-clearButton.addEventListener('click', () => {
-    clearAll();
+//Event listener for the equals button
+equalsButton.addEventListener('click', e =>{
+    compute();
+    updateDisplay();
+    displayValue = "";
+    console.log("Equals");
 });
 
 
-function updateDisplay(){
-    display.textContent = displayValue;
+//Function declarations
+
+//Function to clear all variables and display
+function allClear() {
+    operand1 = "";
+    operator = undefined;
+    operand2 = "";
+    displayValue = "0";
 };
 
-function calcResult(a, b, c){
-    const num1 = parseFloat(a);
-    const num2 = parseFloat(c);
-    if (b === "+"){
-        currentNumber = num1 + num2;
-    }
-    else if (b === "-"){
-        currentNumber = num1 - num2;
-    }
-    else if (b === "/"){
-        currentNumber = num1 / num2;
-    }
-    else if (b === "*"){
-        currentNumber = num1 * num2;
-    }
-    displayValue = currentNumber;
+//Function to delete the last digit of the displayed number
+function deleteDigit() {
+    operand1 = operand1.slice(0, -1);
+    displayValue = displayValue.slice(0, -1);
     updateDisplay();
 };
 
+//Function for appending numbers when clicking the numbers or point
+function appendNumber(number) {
+    if (number === "." && operand1.includes(".")) return;
+    if (displayText.textContent === "0" && number === "0") return;
+    if (displayText.textContent === "0" && number !== ".") displayValue = "";
+    if (displayText.textContent.length === 9) return;
+    if (displayValue == "" && operand1 !== "") operand1 = number
+    else operand1 += number;
+    displayValue += number;
+};
 
+//Function for choosing which operation to do
+function chooseOperation(operation) {
+    if (operand1 === "") return;
+    if (operand2 !== ""){
+        compute();
+    }
+    operator = operation;
+    operand2 = operand1;
+    operand1 = "";
+    displayValue = "";
+};
 
-
-
-function clearAll(){
-    currentNumber = "";
-    operator = "";
-    oldNumber = "";
-    displayValue = 0;
+//Function for computing the result of the calculation
+function compute(){
+    let computation;
+    const a = parseFloat(operand2);
+    const b = parseFloat(operand1);
+    if (isNaN(a) || isNaN(b)) return;
+    switch (operator) {
+        case '+':
+            computation = a + b;
+            break
+        case '-':
+            computation = a - b
+            break
+        case '*':
+            computation = a * b
+            break
+        case '÷':
+            if (b === 0){
+                computation = "Nice try"
+            }
+            else {computation = a / b}
+            break
+        default: return
+    };
+    if (computation.toString().length > 9){
+        computation = computation.toExponential(3);
+    }
+    operand1 = computation;
+    displayValue = computation;
+    operator = undefined;
+    operand2 = "";
     updateDisplay();
+}
+
+//Function for updating the display text
+function updateDisplay() {
+     displayText.textContent = displayValue;
 };
